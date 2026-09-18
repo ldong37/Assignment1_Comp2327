@@ -1,13 +1,13 @@
 from decimal import Decimal
 from account.account_status import AccountStatus    
-from account.client import Client
+from account.client import client
 
 class BankAccount: 
     """Represents an account at a financial institution. """
     def __init__(self,
                   account_id: int,
                   balance: Decimal, 
-                  owner: Client,
+                  owner: client,
                   status: AccountStatus):
         """Initialize the BankAccount object.
 
@@ -17,3 +17,10 @@ class BankAccount:
             owner (Client): Represents the owner of the bank account.
             status (AccountStatus): Represents the status of the bank account.
         """
+
+        if account_id <= 0:
+            raise ValueError("Account ID must be a positive number.")
+        self._account_id = account_id
+        self._balance = balance
+        self._owner = owner
+        self._status = status
