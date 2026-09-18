@@ -15,4 +15,17 @@ class Client:  #Prepresent items in the client section
         """
 
         if client_id <= 0:
-            raise ValueError("Client ID must be a positive numeber.")
+            raise ValueError("Client ID must be a positive number.")
+
+        client_name = name.strip()
+        if not client_name:
+            raise ValueError("Client name cannot be empty.")
+
+        try:
+            validated_email = validate_email(email_address)
+        except EmailNotValidError:
+            raise ValueError("Invalid email address.")
+
+        self.client_id = client_id
+        self.name = client_name
+        self.email_address = validated_email.email
