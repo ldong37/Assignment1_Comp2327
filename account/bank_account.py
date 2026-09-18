@@ -24,3 +24,8 @@ class BankAccount:
         self._balance = balance
         self._owner = owner
         self._status = status
+
+@property
+def account_id(self) -> int:
+    """int: Gets the read-only account ID of the bank account."""
+    return self._account_id
