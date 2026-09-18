@@ -2,7 +2,7 @@ from email_validator import validate_email, EmailNotValidError
 
 class client:  #Represent items in the client section
     def __init__(self,
-                 client_id: str,
+                 client_id: int,
                  name: str,
                  email_address: str):
 
