@@ -30,5 +30,9 @@ class Client:  #Prepresent items in the client section
         self.name = client_name
         self.email_address = validated_email.email
 
-        #Validate and normalize the email by using setter method
-        self.email_address = validated_email.email
+    @property
+    def client_id(self) -> int:
+        """Get the client ID."""
+        return self.client_id
+
+        
