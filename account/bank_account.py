@@ -39,3 +39,8 @@ def balance(self) -> Decimal:
 def owner(self) -> client:
     """Client: Gets the read-only owner of the bank account."""
     return self._owner
+
+@property
+def status(self) -> AccountStatus:
+    """AccountStatus: Gets the read-only status of the bank account."""
+    return self._status
