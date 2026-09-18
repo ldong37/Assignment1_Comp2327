@@ -45,4 +45,9 @@ class client:  #Prepresent items in the client section
         """Get the client email address."""
         return self.email_address
 
-    
+    @email_address.setter
+    def email_address(self, value: str) -> None:
+        """Set the email address, validating and normalizing it.
+           Raises:
+           EmailNotValidError: If the email address is not valid. 
+        """
