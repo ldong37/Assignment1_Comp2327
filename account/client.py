@@ -35,4 +35,7 @@ class Client:  #Prepresent items in the client section
         """Get the client ID."""
         return self.client_id
 
-        
+    @property
+    def name(self) -> str:
+        """Get the client name."""
+        return self.name
