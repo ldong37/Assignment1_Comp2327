@@ -1,6 +1,6 @@
 from email_validator import validate_email, EmailNotValidError
 
-class client:  #Prepresent items in the client section
+class client:  #Represent items in the client section
     def __init__(self,
                  client_id: str,
                  name: str,
