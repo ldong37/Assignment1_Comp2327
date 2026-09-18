@@ -21,29 +21,31 @@ class client:  #Prepresent items in the client section
         if not client_name:
             raise ValueError("Client name cannot be empty.")
 
-        _, parsed_email = parseaddr(email_address)
-        if (parsed_email != email_address.strip()
-                or not re.fullmatch(r"[^\s@]+@[^\s@]+\.[^\s@]+", parsed_email)):
+        try:
+            validated_email = validate_email(email_address)
+
+        except EmailNotValidError:
             raise ValueError("Invalid email address.")
 
-        self.client_id = client_id
-        self.name = client_name
-        self.email_address = parsed_email
+        self._client_id = client_id
+        self._name = client_name
+        self.email_address = validated_email.email  # Store the normalized email address
 
     @property
     def client_id(self) -> int:
         """Get the client ID."""
-        return self.client_id
+        return self._client_id
 
     @property
     def name(self) -> str:
         """Get the client name."""
-        return self.name
+        return self._name
+    
 
     @property
     def email_address(self) -> str:
         """Get the client email address."""
-        return self.email_address
+        return self._email_address
 
     @email_address.setter
     def email_address(self, value: str) -> None:
@@ -51,3 +53,9 @@ class client:  #Prepresent items in the client section
            Raises:
            EmailNotValidError: If the email address is not valid. 
         """
+
+        ### check_deliverability=False is required by the assignment instructions. ###
+        valid = validate_email(value, check_deliverability=False)
+        self._email_address = valid.normalized
+
+    
