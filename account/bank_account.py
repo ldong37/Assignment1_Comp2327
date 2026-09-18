@@ -80,3 +80,10 @@ def withdraw(self, amount: Decimal) -> None:
     if amount > self._balance:
         raise ValueError("Insufficient funds for withdrawal.")
     self._update_balance(-amount)
+
+def __str__(self) -> str:
+    """Returns a string representation of the bank account."""
+    return (f"BankAccount(account_id={self._account_id}, "
+            f"balance={self._balance}, "
+            f"owner={self._owner.name}, "
+            f"status={self._status.name})")
