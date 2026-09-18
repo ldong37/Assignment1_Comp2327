@@ -44,3 +44,24 @@ def owner(self) -> client:
 def status(self) -> AccountStatus:
     """AccountStatus: Gets the read-only status of the bank account."""
     return self._status
+
+def _update_balance(self, amount: Decimal) -> None:
+    """Updates the balance of the bank account.
+
+    Args:
+        amount (Decimal): The amount to update the balance by. Can be positive or negative.
+    """
+    self._balance += amount
+
+def deposit(self, amount: Decimal) -> None:
+    """Deposits an amount into the bank account.
+
+    Args:
+        amount (Decimal): The amount to deposit. Must be positive.
+
+    Raises:
+        ValueError: If the amount is not positive.
+    """
+    if amount <= 0:
+        raise ValueError("Deposit amount must be positive.")
+    self._update_balance(amount)
