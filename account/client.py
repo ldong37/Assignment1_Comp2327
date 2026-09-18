@@ -29,3 +29,6 @@ class Client:  #Prepresent items in the client section
         self.client_id = client_id
         self.name = client_name
         self.email_address = validated_email.email
+
+        #Validate and normalize the email by using setter method
+        self.email_address = validated_email.email
