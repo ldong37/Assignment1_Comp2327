@@ -65,3 +65,18 @@ def deposit(self, amount: Decimal) -> None:
     if amount <= 0:
         raise ValueError("Deposit amount must be positive.")
     self._update_balance(amount)
+
+def withdraw(self, amount: Decimal) -> None:
+    """Withdraws an amount from the bank account.
+
+    Args:
+        amount (Decimal): The amount to withdraw. Must be positive and less than or equal to the current balance.
+
+    Raises:
+        ValueError: If the amount is not positive or exceeds the current balance.
+    """
+    if amount <= 0:
+        raise ValueError("Withdrawal amount must be positive.")
+    if amount > self._balance:
+        raise ValueError("Insufficient funds for withdrawal.")
+    self._update_balance(-amount)
