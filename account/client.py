@@ -39,3 +39,8 @@ class Client:  #Prepresent items in the client section
     def name(self) -> str:
         """Get the client name."""
         return self.name
+
+    @property
+    def email_address(self) -> str:
+        """Get the client email address."""
+        return self.email_address
