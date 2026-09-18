@@ -1,6 +1,6 @@
 from email_validator import validate_email, EmailNotValidError
 
-class Client:  #Prepresent items in the client section
+class client:  #Prepresent items in the client section
     def __init__(self,
                  client_id: str,
                  name: str,
@@ -21,14 +21,14 @@ class Client:  #Prepresent items in the client section
         if not client_name:
             raise ValueError("Client name cannot be empty.")
 
-        try:
-            validated_email = validate_email(email_address)
-        except EmailNotValidError:
+        _, parsed_email = parseaddr(email_address)
+        if (parsed_email != email_address.strip()
+                or not re.fullmatch(r"[^\s@]+@[^\s@]+\.[^\s@]+", parsed_email)):
             raise ValueError("Invalid email address.")
 
         self.client_id = client_id
         self.name = client_name
-        self.email_address = validated_email.email
+        self.email_address = parsed_email
 
     @property
     def client_id(self) -> int:
@@ -44,3 +44,5 @@ class Client:  #Prepresent items in the client section
     def email_address(self) -> str:
         """Get the client email address."""
         return self.email_address
+
+    
