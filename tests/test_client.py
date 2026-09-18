@@ -28,3 +28,23 @@ class TestClient(unittest.TestCase):
         self.assertEqual(client_instance._client_id, 1)
         self.assertEqual(client_instance.name, "Test Name")
         self.assertEqual(client_instance.email_address, "test@example.com")
+
+
+#Property tests
+    
+    def test_email_address_property(self):
+        client_instance = client(10, "Test Name", "test@example.com")
+        self.assertEqual(client_instance.client_id, 10)
+
+    def test_name_property(self):
+        client_instance = client(10, "Test Name", "test@example.com")
+        self.assertEqual(client_instance.name, "Test Name")
+
+    def test_email_address_property_get(self):
+        client_instance = client(10, "Test Name", "test@example.com")
+        self.assertEqual(client_instance.email_address, "test@example.com")
+
+    def test_email_address_property_set_valid(self):
+        client_instance = client(10, "Test Name", "test@example.com")
+        client_instance.email_address = "newemail@example.com"
+        self.assertEqual(client_instance.email_address, "newemail@example.com")
