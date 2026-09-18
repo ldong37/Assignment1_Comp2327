@@ -29,3 +29,8 @@ class BankAccount:
 def account_id(self) -> int:
     """int: Gets the read-only account ID of the bank account."""
     return self._account_id
+
+@property
+def balance(self) -> Decimal:
+    """Decimal: Gets the read-only balance of the bank account."""
+    return self._balance
