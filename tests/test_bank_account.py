@@ -43,3 +43,13 @@ class TestBankAccount(unittest.TestCase):
         self.assertEqual(self.account._status, AccountStatus.ACTIVE)
 
 
+#Update balance tests
+def test_update_balance_positive(self):
+    self.account.update_balance(Decimal("1050"))
+    self.assertEqual(self.account._BankAccount__balance,Decimal("1050"))
+
+def test_update_balance_negative(self):
+    self.account.update_balance(Decimal("-1050"))
+    self.assertEqual(self.account._BankAccount__balance,Decimal("-1050"))
+
+

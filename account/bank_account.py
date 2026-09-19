@@ -45,7 +45,7 @@ def status(self) -> AccountStatus:
     """AccountStatus: Gets the read-only status of the bank account."""
     return self._status
 
-def _update_balance(self, amount: Decimal) -> None:
+def update_balance (self, amount: Decimal) -> None:
     """Updates the balance of the bank account.
 
     Args:
@@ -64,7 +64,7 @@ def deposit(self, amount: Decimal) -> None:
     """
     if amount <= 0:
         raise ValueError("Deposit amount must be positive.")
-    self._update_balance(amount)
+    self.update_balance(amount)
 
 def withdraw(self, amount: Decimal) -> None:
     """Withdraws an amount from the bank account.
@@ -79,7 +79,7 @@ def withdraw(self, amount: Decimal) -> None:
         raise ValueError("Withdrawal amount must be positive.")
     if amount > self._balance:
         raise ValueError("Insufficient funds for withdrawal.")
-    self._update_balance(-amount)
+    self.update_balance(-amount)
 
 def __str__(self) -> str:
     """Returns a string representation of the bank account."""
