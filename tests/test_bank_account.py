@@ -50,6 +50,19 @@ def test_update_balance_positive(self):
 
 def test_update_balance_negative(self):
     self.account.update_balance(Decimal("-1050"))
-    self.assertEqual(self.account._BankAccount__balance,Decimal("-1050"))
+    self.assertEqual(self.account.balance,Decimal("-1050"))
 
+
+#Deposit tests
+def test_deposit_less_than_zero(self):
+    with self.assertRaises(ValueError) as context:
+         self.account.deposit(Decimal("-10.00"))
+    self.assertEqual(str(context.exception), "amount must be a value greater than or equal to zero")
+
+def test_deposit_valid(self):
+    self.account.deposit(Decimal("250.00"))
+    self.assertEqual(self.account.balance,Decimal("1250.00"))
+
+
+#Withdraw tests
 
