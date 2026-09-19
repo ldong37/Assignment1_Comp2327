@@ -27,3 +27,19 @@ class TestBankAccount(unittest.TestCase):
         self.assertEqual(self.account._BankAccount_account_id, 100)
         self.assertEqual(self.account._BankAccount_balance, Decimal('1000.00'))
 
+
+#Property tests
+    
+    def test_account_id_property(self):
+        self.assertEqual(self.account._account_id, 100)
+
+    def test_balance_property(self):
+        self.assertEqual(self.account._balance, Decimal('1000.00'))
+
+    def test_owner_property(self):
+        self.assertEqual(self.account._owner, self.client_instance)
+
+    def test_status_property(self):
+        self.assertEqual(self.account._status, AccountStatus.ACTIVE)
+
+
