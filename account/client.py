@@ -1,6 +1,6 @@
 from email_validator import validate_email, EmailNotValidError
 
-class client:  #Represent items in the client section
+class Client:  #Represent items in the client section
     def __init__(self,
                  client_id: int,
                  name: str,
@@ -9,7 +9,7 @@ class client:  #Represent items in the client section
         """Initialize the client object 
           
            Args:
-        Client_id (str): Unique identifier for the client.
+        Client_id (int): Unique identifier for the client.
         Name (str): Name of the client.
         Email_address (str): Email address of the client.
         """

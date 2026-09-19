@@ -1,13 +1,13 @@
 from decimal import Decimal
 from account.account_status import AccountStatus    
-from account.client import client
+from account.client import Client
 
 class BankAccount: 
     """Represents an account at a financial institution. """
     def __init__(self,
                   account_id: int,
                   balance: Decimal, 
-                  owner: client,
+                  owner: Client,
                   status: AccountStatus):
         """Initialize the BankAccount object.
 
@@ -36,7 +36,7 @@ def balance(self) -> Decimal:
     return self._balance
 
 @property
-def owner(self) -> client:
+def owner(self) -> Client:
     """Client: Gets the read-only owner of the bank account."""
     return self._owner
 
