@@ -31,7 +31,7 @@ class TestBankAccount(unittest.TestCase):
 #Property tests
     
     def test_account_id_property(self):
-        self.assertEqual(self.account._account_id, 100)
+        self.assertEqual(self.account._account_id, 101)
 
     def test_balance_property(self):
         self.assertEqual(self.account._balance, Decimal('1000.00'))
@@ -45,12 +45,12 @@ class TestBankAccount(unittest.TestCase):
 
 #Update balance tests
 def test_update_balance_positive(self):
-    self.account.update_balance(Decimal("1050"))
+    self.account.update_balance(Decimal("50"))
     self.assertEqual(self.account._BankAccount__balance,Decimal("1050"))
 
 def test_update_balance_negative(self):
-    self.account.update_balance(Decimal("-1050"))
-    self.assertEqual(self.account.balance,Decimal("-1050"))
+    self.account.update_balance(Decimal("-50"))
+    self.assertEqual(self.account.balance,Decimal("950"))
 
 
 #Deposit tests
@@ -85,3 +85,13 @@ def test_withdraw_valid(self):
         self.account.withdraw(Decimal("200.00"))
         self.assertEqual(self.account.balance, Decimal("800.00"))
 
+
+#_str_ test
+
+def test_str_representation(self):
+     #Base on the ex:Account num:2026 Balance : $6,764.64
+     #Client account starts at 1000.00, so it should format to $1,000.00
+     self.assertEqual(str(self.account),"Account Number: 101 Balance: $1,000.00")
+
+if __name__ == '__main__':
+    unittest.main()
