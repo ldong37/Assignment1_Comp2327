@@ -66,3 +66,22 @@ def test_deposit_valid(self):
 
 #Withdraw tests
 
+def test_withdraw_less_than_zero(self):
+        with self.assertRaises(ValueError) as context:
+            self.account.withdraw(Decimal("-10.00"))
+        self.assertEqual(str(context.exception), "amount must be a value greater than or equal to zero")
+
+def test_withdraw_zero(self):
+        # Zero is allowed by the logic, but it shouldn't change the balance
+        self.account.withdraw(Decimal("0.00"))
+        self.assertEqual(self.account.balance, Decimal("1000.00"))
+
+def test_withdraw_greater_than_balance(self):
+        with self.assertRaises(ValueError) as context:
+            self.account.withdraw(Decimal("1500.00"))
+        self.assertEqual(str(context.exception), "amount cannot exceed the account balance")
+
+def test_withdraw_valid(self):
+        self.account.withdraw(Decimal("200.00"))
+        self.assertEqual(self.account.balance, Decimal("800.00"))
+
