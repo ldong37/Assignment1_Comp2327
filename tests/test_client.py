@@ -48,3 +48,19 @@ class TestClient(unittest.TestCase):
         client_instance = client(10, "Test Name", "test@example.com")
         client_instance.email_address = "newemail@example.com"
         self.assertEqual(client_instance.email_address, "newemail@example.com")
+
+    def test_email_address_property_set_invalid(self):
+        client_instance = client(10, "Test Name", "test@example.com")
+        with self.assertRaises(EmailNotValidError):
+            client_instance.email_address = "invalid-email"
+
+
+#_str_ Test 
+
+def test_str_method(self): 
+    """Format: <Client ID: {client_id}, Name: {name}, Email: {email_address}>"""
+    client_instance = client(1010, "John Doe", "john.doe@example.com")
+    self.assertEqual(str(client), "<Client ID: 1010, Name: John Doe, Email: john.doe@example.com>")
+
+if __name__ == '__main__':
+    unittest.main()
